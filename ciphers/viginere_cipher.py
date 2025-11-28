@@ -3,26 +3,60 @@ Vigenère Cipher Implementation
 Classical polyalphabetic substitution cipher
 """
 
+from matplotlib.pyplot import table, text
+
+
 class VigenereCipher:
     def __init__(self, key, table=None):
         """Initialize Vigenère cipher with a key and optional custom table"""
-       
-        pass
+        self.key = key.upper()
+        self.table = table if table is not None else self._create_standard_table()
     
     def _create_standard_table(self):
-        """Create standard Vigenère table (26x26)"""
-   
-        pass
+          """Create standard Vigenère table (26x26)"""
+
+          table = []
+
+          for i in range(26):
+                    row = []
+                    for j in range(26):
+                        row.append(chr((i + j) % 26 + ord('A')))
+                    table.append(row)
+          return table
+    
+        
     
     def _extend_key(self, text):
-        """Extend key to match text length"""
+         """Extend key to match text length"""
+         key = ""
+         key_index = 0
+         
+         for char in text:
+            if char.isalpha():
+                key += self.key[key_index % len(self.key)]
+                key_index += 1
+            else:
+                key += char
         
-        pass
+         return key
     
     def encrypt(self, plaintext):
         """Encrypt plaintext using Vigenère cipher"""
-   
-        pass
+        plaintext = plaintext.upper()
+        key = self._extend_key(plaintext)
+        ciphertext = ""
+        
+        for i, char in enumerate(plaintext):
+            if char.isalpha():
+                # Use table for encryption
+                row = ord(key[i]) - ord('A')
+                col = ord(char) - ord('A')
+                encrypted_char = self.table[row][col]
+                ciphertext += encrypted_char
+            else:
+                ciphertext += char
+        
+        return ciphertext
     
     def decrypt(self, ciphertext):
         """Decrypt ciphertext using Vigenère cipher"""
