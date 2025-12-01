@@ -23,9 +23,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-### GUI Application (Recommended)
-
-Run the professional graphical interface:
+### GUI Application
 
 ```bash
 python gui.py
