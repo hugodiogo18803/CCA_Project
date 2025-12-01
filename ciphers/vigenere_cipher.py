@@ -3,9 +3,6 @@ Vigenère Cipher Implementation
 Classical polyalphabetic substitution cipher
 """
 
-from matplotlib.pyplot import table, text
-
-
 class VigenereCipher:
     def __init__(self, key, table=None):
         """Initialize Vigenère cipher with a key and optional custom table"""
