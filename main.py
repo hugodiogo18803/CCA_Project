@@ -7,7 +7,7 @@ import os
 from ciphers.aes_cipher import AESCipher
 from ciphers.des_cipher import DESCipher
 from ciphers.playfair_cipher import PlayfairCipher
-from ciphers.vigenere_cipher import VigenereCipher
+from ciphers.viginere_cipher import VigenereCipher
 
 
 def run_aes():
