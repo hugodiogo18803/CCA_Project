@@ -205,7 +205,11 @@ A aplicação fornece uma Interface Gráfica (GUI) para facilitar a interação 
 \section{Enquadramento Teórico}\label{theory}
 
 \subsection{Cifras Clássicas}
+<<<<<<< HEAD
 As cifras clássicas implementadas operam ao nível do caráter e pertencem à era pré-computacional.
+=======
+As cifras clássicas implementadas operam ao nível do caracter (byte visível).
+>>>>>>> d1a65c1be61566cbada1c23da1288f6a8898a245
 \begin{itemize}
     \item \textbf{Vigenère:} Uma cifra polialfabética que utiliza uma chave e uma tabela (\textit{Tabula Recta}) para substituir caracteres, dificultando a análise de frequências simples.
     \item \textbf{Playfair:} Uma cifra de substituição poligráfica que opera sobre digramas (pares de letras) utilizando uma matriz $5 \times 5$.
@@ -227,6 +231,7 @@ A aplicação foi desenvolvida em \textbf{Python} devido à sua versatilidade na
 \subsection{Interface Gráfica (GUI)}
 A GUI permite ao utilizador selecionar o algoritmo, carregar os ficheiros de chave/tabela e indicar os ficheiros de entrada e saída.
 
+<<<<<<< HEAD
 \begin{figure}[H]
     \centering
     % COLOCA AQUI O CAMINHO DA TUA GUI
@@ -234,6 +239,10 @@ A GUI permite ao utilizador selecionar o algoritmo, carregar os ficheiros de cha
     \caption{Interface principal da aplicação desenvolvida.}
     \label{fig:gui_main}
 \end{figure}
+=======
+\subsection{Estrutura da Aplicação}
+A aplicação foi desenvolvida seguindo uma arquitetura modular que separa a interface gráfica da lógica criptográfica. O ficheiro principal, \texttt{gui.py}, implementa a interface utilizando a biblioteca \textbf{CustomTkinter}, gerindo os eventos do utilizador e invocando as classes específicas para cada cifra (\texttt{aes\_cipher.py}, \texttt{des\_cipher.py}, \texttt{playfair\_cipher.py} e \texttt{vigenere\_cipher.py}).
+>>>>>>> d1a65c1be61566cbada1c23da1288f6a8898a245
 
 \subsection{Implementação: AES e DES}
 Para as cifras modernas, utilizou-se a biblioteca \textbf{PyCryptodome}. 
@@ -272,9 +281,19 @@ A cifra Playfair envolveu a criação dinâmica da matriz $5 \times 5$, fundindo
 Apesar da funcionalidade correta, identificam-se os seguintes aspetos críticos de segurança:
 
 \begin{enumerate}
+<<<<<<< HEAD
     \item \textbf{Gestão de Chaves:} As chaves são lidas de ficheiros de texto simples. Em produção, dever-se-ia utilizar um KMS (Key Management System).
     \item \textbf{Integridade:} O modo CBC garante confidencialidade, mas não integridade. A aplicação é vulnerável a ataques de modificação de bits ("bit-flipping"), pois não implementa HMAC para autenticação da mensagem.
     \item \textbf{Memória:} Python não permite limpeza segura de memória, deixando chaves expostas em RAM durante a execução.
+=======
+    \item \textbf{Armazenamento de Material Criptográfico:} A leitura de chaves a partir de ficheiros de texto simples (\textit{cleartext}) viola princípios fundamentais de gestão de segredos. Num ambiente de produção, esta abordagem expõe o sistema a fugas de informação triviais. A solução adequada passaria pela utilização de cofres digitais (\textit{Key Management Systems} - KMS) ou módulos de segurança de hardware (HSM), garantindo que as chaves nunca residem em disco de forma legível.
+    
+    \item \textbf{Segurança Semântica e Gestão do IV:} Para os algoritmos AES e DES, optou-se pelo modo de operação CBC (\textit{Cipher Block Chaining}) em detrimento do inseguro modo ECB. Para garantir a segurança semântica (assegurando que a cifragem do mesmo texto simples resulta em criptogramas distintos), é gerado um Vetor de Inicialização (IV) pseudoaleatório e criptograficamente seguro para cada operação. O IV é concatenado ao início do ficheiro cifrado; esta prática é segura, pois o IV não é um segredo, necessitando apenas de ser único (nonce) e imprevisível.
+    
+    \item \textbf{Integridade e Autenticidade (Limitação):} É importante notar que a aplicação garante a confidencialidade, mas não a integridade dos dados. O modo CBC é maleável a ataques de inversão de bits. A ausência de um mecanismo de autenticação de mensagem (como HMAC ou o uso de modos autenticados como GCM - \textit{Galois/Counter Mode}) significa que a aplicação não deteta se o ficheiro cifrado foi adulterado por terceiros antes da decifragem.
+    
+    \item \textbf{Gestão de Memória:} A utilização de Python, uma linguagem de gestão automática de memória, impede o controlo granular sobre a limpeza de variáveis sensíveis (chaves e texto simples) da RAM após o uso, o que poderia permitir ataques de \textit{memory dump} em máquinas comprometidas.
+>>>>>>> d1a65c1be61566cbada1c23da1288f6a8898a245
 \end{enumerate}
 
 % ======================================================================
