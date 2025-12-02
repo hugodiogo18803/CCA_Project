@@ -325,10 +325,12 @@ INPUT .\Relatorio.out
 INPUT .\Relatorio.out
 INPUT Relatorio.run.xml
 OUTPUT Relatorio.run.xml
-INPUT C:\Users\darkc\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
-INPUT C:\Users\darkc\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
 INPUT C:\Users\darkc\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0800.pk
 INPUT C:\Users\darkc\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0800.pk
+INPUT C:\Users\darkc\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
+INPUT C:\Users\darkc\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
+INPUT C:\Users\darkc\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\darkc\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\darkc\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\darkc\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\darkc\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb

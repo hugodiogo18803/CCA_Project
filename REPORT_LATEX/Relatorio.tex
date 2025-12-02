@@ -263,17 +263,68 @@ def encrypt_file(self, data):
 \end{lstlisting}
 
 \subsection{Implementação: Vigenère}
-A cifra de Vigenère foi implementada de raiz. A função \texttt{\_extend\_key} garante que a chave cobre todo o texto. A operação matemática é realizada módulo 26.
+A cifra de Vigenère foi implementada de raiz, suportando tanto a geração automática de uma \textit{Tabula Recta} padrão ($26 \times 26$) como o carregamento de tabelas personalizadas. O algoritmo utiliza o método auxiliar \texttt{\_extend\_key} para ajustar o comprimento da chave à mensagem.
 
-\begin{lstlisting}[caption={Lógica aritmética do Vigenère}, label={lst:vig_code}]
+\subsubsection{Cifragem e Decifragem}
+A implementação distingue-se pela assimetria algorítmica entre as operações de cifragem e decifragem, necessária para suportar tabelas com alfabetos desordenados:
+
+\begin{enumerate}
+    \item \textbf{Cifragem ($O(1)$):} O algoritmo calcula os índices da linha (chave) e coluna (texto) e acede diretamente à matriz.
+    \item \textbf{Decifragem ($O(N)$):} O algoritmo identifica a linha através da chave, mas necessita de percorrer essa linha (pesquisa linear) para encontrar a posição do caráter cifrado e deduzir a coluna original.
+\end{enumerate}
+
+Os excertos abaixo ilustram esta distinção na implementação:
+
+\begin{lstlisting}[caption={Cifragem: Acesso direto à matriz}, label={lst:vig_enc}]
+# Cifragem: Calculo direto das coordenadas
 row = ord(key[i]) - ord('A')
 col = ord(char) - ord('A')
+
 encrypted_char = self.table[row][col]
+ciphertext += encrypted_char
 \end{lstlisting}
 
-\subsection{Implementação: Playfair}
-A cifra Playfair envolveu a criação dinâmica da matriz $5 \times 5$, fundindo 'I' e 'J'. Foi implementado um pré-processamento para inserir o caráter 'X' entre letras repetidas num digrama.
+\begin{lstlisting}[caption={Decifragem: Pesquisa linear na linha}, label={lst:vig_dec}]
+# Decifragem: Identifica a linha e procura o carater
+row = ord(key[i]) - ord('A')
 
+for col in range(26):
+    # Percorre a linha ate encontrar o carater cifrado
+    if self.table[row][col] == char:
+        plaintext += chr(col + ord('A'))
+        break
+\end{lstlisting}
+\subsection{Implementação: Playfair}
+A cifra Playfair envolveu a criação dinâmica da matriz $5 \times 5$, onde a letra 'J' é fundida com o 'I' para se ajustar à grelha de 25 caracteres. Antes do processamento criptográfico, foi implementado um método auxiliar \texttt{\_prepare\_text} que normaliza a entrada: converte para maiúsculas, remove caracteres não-alfabéticos e insere um caráter de enchimento ('X') entre letras repetidas num digrama ou no final do texto caso este tenha um comprimento ímpar.
+
+\subsubsection{Lógica de Cifragem e Decifragem}
+O núcleo do algoritmo reside na localização das coordenadas $(linha, coluna)$ de cada par de letras na matriz. A transformação segue três regras geométricas distintas, implementadas através de aritmética modular:
+
+\begin{enumerate}
+    \item \textbf{Mesma Linha:} Na cifragem, as letras são substituídas pelas que se encontram imediatamente à direita (coluna + 1). Na decifragem, utiliza-se a letra imediatamente à esquerda (coluna - 1).
+    \item \textbf{Mesma Coluna:} Na cifragem, as letras são substituídas pelas que se encontram imediatamente abaixo (linha + 1). Na decifragem, utiliza-se a letra imediatamente acima (linha - 1).
+    \item \textbf{Retângulo:} As letras formam os cantos opostos de um retângulo. Neste caso, trocam-se as colunas das letras, mantendo-se as linhas originais. Esta operação é a mesma tanto na cifragem como na decifragem.
+\end{enumerate}
+
+O seguinte excerto de código ilustra a aplicação destas regras durante o processo de cifragem:
+
+\begin{lstlisting}[caption={Regras de transformação Playfair (Cifragem)}, label={lst:playfair_logic}]
+# Determina as coordenadas do par na matriz
+row1, col1 = self._find_position(plaintext[i])
+row2, col2 = self._find_position(plaintext[i + 1])
+
+if row1 == row2:  # Mesma linha
+    ciphertext += self.matrix[row1][(col1 + 1) % 5]
+    ciphertext += self.matrix[row2][(col2 + 1) % 5]
+elif col1 == col2:  # Mesma coluna
+    ciphertext += self.matrix[(row1 + 1) % 5][col1]
+    ciphertext += self.matrix[(row2 + 1) % 5][col2]
+else:  # Retangulo
+    ciphertext += self.matrix[row1][col2]
+    ciphertext += self.matrix[row2][col1]
+\end{lstlisting}
+
+Para a decifragem, a lógica é idêntica, alterando apenas o operador aritmético nas regras de linha e coluna para subtração (ex: \texttt{(col1 - 1) \% 5}), revertendo assim o deslocamento circular.
 % ======================================================================
 % 4. ANÁLISE DE SEGURANÇA
 % ======================================================================
@@ -281,19 +332,9 @@ A cifra Playfair envolveu a criação dinâmica da matriz $5 \times 5$, fundindo
 Apesar da funcionalidade correta, identificam-se os seguintes aspetos críticos de segurança:
 
 \begin{enumerate}
-<<<<<<< HEAD
     \item \textbf{Gestão de Chaves:} As chaves são lidas de ficheiros de texto simples. Em produção, dever-se-ia utilizar um KMS (Key Management System).
     \item \textbf{Integridade:} O modo CBC garante confidencialidade, mas não integridade. A aplicação é vulnerável a ataques de modificação de bits ("bit-flipping"), pois não implementa HMAC para autenticação da mensagem.
     \item \textbf{Memória:} Python não permite limpeza segura de memória, deixando chaves expostas em RAM durante a execução.
-=======
-    \item \textbf{Armazenamento de Material Criptográfico:} A leitura de chaves a partir de ficheiros de texto simples (\textit{cleartext}) viola princípios fundamentais de gestão de segredos. Num ambiente de produção, esta abordagem expõe o sistema a fugas de informação triviais. A solução adequada passaria pela utilização de cofres digitais (\textit{Key Management Systems} - KMS) ou módulos de segurança de hardware (HSM), garantindo que as chaves nunca residem em disco de forma legível.
-    
-    \item \textbf{Segurança Semântica e Gestão do IV:} Para os algoritmos AES e DES, optou-se pelo modo de operação CBC (\textit{Cipher Block Chaining}) em detrimento do inseguro modo ECB. Para garantir a segurança semântica (assegurando que a cifragem do mesmo texto simples resulta em criptogramas distintos), é gerado um Vetor de Inicialização (IV) pseudoaleatório e criptograficamente seguro para cada operação. O IV é concatenado ao início do ficheiro cifrado; esta prática é segura, pois o IV não é um segredo, necessitando apenas de ser único (nonce) e imprevisível.
-    
-    \item \textbf{Integridade e Autenticidade (Limitação):} É importante notar que a aplicação garante a confidencialidade, mas não a integridade dos dados. O modo CBC é maleável a ataques de inversão de bits. A ausência de um mecanismo de autenticação de mensagem (como HMAC ou o uso de modos autenticados como GCM - \textit{Galois/Counter Mode}) significa que a aplicação não deteta se o ficheiro cifrado foi adulterado por terceiros antes da decifragem.
-    
-    \item \textbf{Gestão de Memória:} A utilização de Python, uma linguagem de gestão automática de memória, impede o controlo granular sobre a limpeza de variáveis sensíveis (chaves e texto simples) da RAM após o uso, o que poderia permitir ataques de \textit{memory dump} em máquinas comprometidas.
->>>>>>> d1a65c1be61566cbada1c23da1288f6a8898a245
 \end{enumerate}
 
 % ======================================================================
