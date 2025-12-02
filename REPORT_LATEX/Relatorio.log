@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.14)  2 DEC 2025 18:24
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.10)  2 DEC 2025 18:13
->>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.9.10)  2 DEC 2025 18:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -779,11 +775,7 @@ Package hyperref Info: Link coloring OFF on input line 155.
 \@outlinefile=\write4
 \openout4 = `Relatorio.out'.
 
-<<<<<<< HEAD
-<Recursos/Logos/LOGO_IPB.png, id=67, 646.415pt x 499.8675pt>
-=======
-<Recursos/Logos/LOGO_IPB.png, id=80, 646.415pt x 499.8675pt>
->>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621
+<Recursos/Logos/LOGO_IPB.png, id=88, 646.415pt x 499.8675pt>
 File: Recursos/Logos/LOGO_IPB.png Graphic file (type png)
 <use Recursos/Logos/LOGO_IPB.png>
 Package pdftex.def Info: Recursos/Logos/LOGO_IPB.png  used on input line 160.
@@ -796,11 +788,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 23.63593pt on input line 160.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 23.63593pt on input line 160.
-<<<<<<< HEAD
-<Recursos/Logos/IPBejaESTIG.jpg, id=68, 501.875pt x 301.125pt>
-=======
-<Recursos/Logos/IPBejaESTIG.jpg, id=81, 501.875pt x 301.125pt>
->>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621
+<Recursos/Logos/IPBejaESTIG.jpg, id=89, 501.875pt x 301.125pt>
 File: Recursos/Logos/IPBejaESTIG.jpg Graphic file (type jpg)
 <use Recursos/Logos/IPBejaESTIG.jpg>
 Package pdftex.def Info: Recursos/Logos/IPBejaESTIG.jpg  used on input line 160.
@@ -878,16 +866,11 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
 (Font)              scaled to size 9.49997pt on input line 214.
 
-<<<<<<< HEAD
-
-[1]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 258.
-=======
 Overfull \hbox (6.00278pt too wide) in paragraph at lines 237--238
 []\T1/phv/m/n/10 Pacote \T1/cmtt/m/n/10 ciphers/\T1/phv/m/n/10 : Con-tém as im-ple-men-ta-ções iso-la-das de cada ci-fra (\T1/cmtt/m/n/10 aes_cipher.py\T1/phv/m/n/10 , \T1/cmtt/m/n/10 des_cipher.py\T1/phv/m/n/10 ,
  []
 
-<Recursos/Imagens/UIExample.png, id=125, 867.24pt x 776.9025pt>
+<Recursos/Imagens/UIExample.png, id=135, 867.24pt x 776.9025pt>
 File: Recursos/Imagens/UIExample.png Graphic file (type png)
 <use Recursos/Imagens/UIExample.png>
 Package pdftex.def Info: Recursos/Imagens/UIExample.png  used on input line 242.
@@ -895,12 +878,15 @@ Package pdftex.def Info: Recursos/Imagens/UIExample.png  used on input line 242.
 
 
 [1{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 257.
->>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621
+Overfull \hbox (99.89867pt too wide) in paragraph at lines 249--252
+\T1/cmtt/m/n/10 des_cipher.py\T1/phv/m/n/10 , \T1/cmtt/m/n/10 playfair_cipher.py \T1/phv/m/n/10 e \T1/cmtt/m/n/10 vigenere_cipher.py\T1/phv/m/n/10 ). ======= >>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621 
+ []
+
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 265.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 259.
+(Font)              scaled to size 7.59998pt on input line 266.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 259.
+(Font)              scaled to size 4.74998pt on input line 266.
 
 
 [2 <./Recursos/Imagens/UIExample.png>]
@@ -909,16 +895,14 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 
 [4]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 372.
+(Font)              scaled to size 8.54997pt on input line 417.
 
-<<<<<<< HEAD
-LaTeX Warning: Empty bibliography on input line 400.
-=======
->>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621
 
 [5]
 
-LaTeX Warning: Empty bibliography on input line 409.
+[6]
+
+LaTeX Warning: Empty bibliography on input line 454.
 
 (./Relatorio.aux)
  ***********
@@ -926,44 +910,24 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
  ***********
 Package rerunfilecheck Info: File `Relatorio.out' has not changed.
-<<<<<<< HEAD
-(rerunfilecheck)             Checksum: FC8D622236A72A9547C1FBBD66DCB3F4;2994.
-=======
-(rerunfilecheck)             Checksum: 07ADBD9DDB02464805E0426F4AB866D3;3608.
->>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621
+(rerunfilecheck)             Checksum: 6C1510906D05EEB682DF0822844BDEC2;4197.
 Package logreq Info: Writing requests to 'Relatorio.run.xml'.
 \openout1 = `Relatorio.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 23791 strings out of 473702
- 409210 string characters out of 5719437
- 1558790 words of memory out of 5000000
- 46455 multiletter control sequences out of 15000+600000
- 593773 words of font info for 70 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 67i,6n,81p,738b,2807s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\darkc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\Users\darkc\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk><C:/Users/darkc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/darkc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/darkc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/darkc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/darkc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvbo8a.pfb><C:/Users/darkc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/darkc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Relatorio.pdf (9 pages, 230480 bytes).
-PDF statistics:
- 373 PDF objects out of 1000 (max. 8388607)
- 108 named destinations out of 1000 (max. 500000)
- 139 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
- 23809 strings out of 467800
- 404497 string characters out of 5436061
- 1455119 words of memory out of 5000000
- 52088 multiletter control sequences out of 15000+600000
+ 23860 strings out of 467800
+ 405186 string characters out of 5436061
+ 1682272 words of memory out of 5000000
+ 52098 multiletter control sequences out of 15000+600000
  664578 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,8n,77p,750b,2807s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on Relatorio.pdf (10 pages, 300308 bytes).
+Output written on Relatorio.pdf (11 pages, 306689 bytes).
 PDF statistics:
- 276 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
- 82 named destinations out of 1000 (max. 500000)
- 168 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621
+ 336 PDF objects out of 1000 (max. 8388607)
+ 296 compressed objects within 3 object streams
+ 123 named destinations out of 1000 (max. 500000)
+ 184 words of extra memory for PDF output out of 10000 (max. 10000000)
 
