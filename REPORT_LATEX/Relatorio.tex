@@ -145,7 +145,7 @@ O objetivo principal deste trabalho é consolidar os conhecimentos sobre criptog
 \section{Enquadramento Teórico e Tecnológico}
 
 \subsection{Cifras Clássicas}
-As cifras clássicas implementadas operam ao nível do carater (byte visível).
+As cifras clássicas implementadas operam ao nível do caracter (byte visível).
 \begin{itemize}
     \item \textbf{Vigenère:} Uma cifra polialfabética que utiliza uma chave e uma tabela (Tabula Recta) para substituir caracteres.
     \item \textbf{Playfair:} Uma cifra de digramas que utiliza uma matriz $5 \times 5$ gerada a partir de uma chave.
@@ -166,7 +166,7 @@ A aplicação foi desenvolvida na linguagem \textbf{Python} devido à sua versat
 \section{Arquitetura e Implementação}
 
 \subsection{Estrutura da Aplicação}
-A aplicação foi desenvolvida seguindo uma arquitetura modular que separa a interface gráfica da lógica criptográfica. O ficheiro principal, \texttt{gui.py}, implementa a interface utilizando a biblioteca \textbf{Tkinter}, gerindo os eventos do utilizador e invocando as classes específicas para cada cifra (\texttt{aes\_cipher.py}, \texttt{des\_cipher.py}, \texttt{playfair\_cipher.py} e \texttt{vigenere\_cipher.py}).
+A aplicação foi desenvolvida seguindo uma arquitetura modular que separa a interface gráfica da lógica criptográfica. O ficheiro principal, \texttt{gui.py}, implementa a interface utilizando a biblioteca \textbf{CustomTkinter}, gerindo os eventos do utilizador e invocando as classes específicas para cada cifra (\texttt{aes\_cipher.py}, \texttt{des\_cipher.py}, \texttt{playfair\_cipher.py} e \texttt{vigenere\_cipher.py}).
 
 Esta separação permite que os algoritmos sejam testados independentemente da interface, facilitando a manutenção e a correção de erros ("debugging").
 
@@ -231,7 +231,7 @@ A implementação realizada cumpre os requisitos funcionais propostos, no entant
 \begin{enumerate}
     \item \textbf{Armazenamento de Material Criptográfico:} A leitura de chaves a partir de ficheiros de texto simples (\textit{cleartext}) viola princípios fundamentais de gestão de segredos. Num ambiente de produção, esta abordagem expõe o sistema a fugas de informação triviais. A solução adequada passaria pela utilização de cofres digitais (\textit{Key Management Systems} - KMS) ou módulos de segurança de hardware (HSM), garantindo que as chaves nunca residem em disco de forma legível.
     
-    \item \textbf{Segurança Semântica e Gestão do IV:} Para os algoritmos AES e DES, optou-se pelo modo de operação CBC (\textit{Cipher Block Chaining}) em detrimento do inseguro modo ECB. Para garantir a segurança semântica — assegurando que a cifragem do mesmo texto simples resulta em criptogramas distintos —, é gerado um Vetor de Inicialização (IV) pseudoaleatório e criptograficamente seguro para cada operação. O IV é concatenado ao início do ficheiro cifrado; esta prática é segura, pois o IV não é um segredo, necessitando apenas de ser único (nonce) e imprevisível.
+    \item \textbf{Segurança Semântica e Gestão do IV:} Para os algoritmos AES e DES, optou-se pelo modo de operação CBC (\textit{Cipher Block Chaining}) em detrimento do inseguro modo ECB. Para garantir a segurança semântica (assegurando que a cifragem do mesmo texto simples resulta em criptogramas distintos), é gerado um Vetor de Inicialização (IV) pseudoaleatório e criptograficamente seguro para cada operação. O IV é concatenado ao início do ficheiro cifrado; esta prática é segura, pois o IV não é um segredo, necessitando apenas de ser único (nonce) e imprevisível.
     
     \item \textbf{Integridade e Autenticidade (Limitação):} É importante notar que a aplicação garante a confidencialidade, mas não a integridade dos dados. O modo CBC é maleável a ataques de inversão de bits. A ausência de um mecanismo de autenticação de mensagem (como HMAC ou o uso de modos autenticados como GCM - \textit{Galois/Counter Mode}) significa que a aplicação não deteta se o ficheiro cifrado foi adulterado por terceiros antes da decifragem.
     
