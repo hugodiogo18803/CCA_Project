@@ -205,11 +205,7 @@ A aplicação fornece uma Interface Gráfica (GUI) para facilitar a interação 
 \section{Enquadramento Teórico}\label{theory}
 
 \subsection{Cifras Clássicas}
-<<<<<<< HEAD
-As cifras clássicas implementadas operam ao nível do caráter e pertencem à era pré-computacional.
-=======
 As cifras clássicas implementadas operam ao nível do caracter (byte visível).
->>>>>>>
 \begin{itemize}
     \item \textbf{Vigenère:} Uma cifra polialfabética que utiliza uma chave e uma tabela (\textit{Tabula Recta}) para substituir caracteres, dificultando a análise de frequências simples.
     \item \textbf{Playfair:} Uma cifra de substituição poligráfica que opera sobre digramas (pares de letras) utilizando uma matriz $5 \times 5$.
@@ -243,13 +239,8 @@ A estrutura do projeto foi organizada em pacotes para facilitar a manutenção e
     \caption{Interface principal da aplicação desenvolvida.}
     \label{fig:gui_main}
 \end{figure}
-<<<<<<< HEAD
-=======
 \subsection{Estrutura da Aplicação}
 A aplicação foi desenvolvida seguindo uma arquitetura modular que separa a interface gráfica da lógica criptográfica. O ficheiro principal, \texttt{gui.py}, implementa a interface utilizando a biblioteca \textbf{CustomTkinter}, gerindo os eventos do utilizador e invocando as classes específicas para cada cifra (\texttt{aes\_cipher.py}, \texttt{des\_cipher.py}, \texttt{playfair\_cipher.py} e \texttt{vigenere\_cipher.py}).
-=======
->>>>>>> 93131a209d46ae8544671cd09e9b47ee762a0621
-
 
 \subsection{Implementação: Cifras Modernas (AES e DES)}
 Para as cifras modernas, utilizou-se a biblioteca \textbf{PyCryptodome}. Ambas as implementações partilham a mesma arquitetura de segurança:
