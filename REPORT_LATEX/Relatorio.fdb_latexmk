@@ -1,20 +1,22 @@
 # Fdb version 4
-["biber Relatorio"] 1764697349.42455 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1764697353.33394 0
-  "Relatorio.bcf" 1764697353 133956 fc2b3fc7e259c32c04ce9ae64be32781 "pdflatex"
+["biber Relatorio"] 0 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1764699233.14566 -1
+  "Recursos/referencias.bib" 1764631222 470 e8b35e6fe5bd9c9dfa956179cfff48f1 ""
+  "Relatorio.bcf" 1764699232 133956 fc2b3fc7e259c32c04ce9ae64be32781 "pdflatex"
   (generated)
   "Relatorio.bbl"
   "Relatorio.blg"
   (rewritten before read)
-["pdflatex"] 1764697351.40741 "e:/CCA/Projeto/CCA_Project/CCA_Project/REPORT_LATEX/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1764697353.33475 0
+["pdflatex"] 1764699231.18249 "e:/CCA/Projeto/CCA_Project/CCA_Project/REPORT_LATEX/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1764699233.14654 0
+  "Recursos/Imagens/UIExample.png" 1764698739 38458 e5ec7e559f9e7fd7c6eb95e82b89d1b2 ""
   "Recursos/Logos/IPBejaESTIG.jpg" 1764631222 24524 8256cc09fbb9140893a7ec292a0eb389 ""
   "Recursos/Logos/LOGO_IPB.png" 1764631222 70931 8e4fd2cd3676e6d3adc0f137d7334c9f ""
-  "Relatorio.aux" 1764697353 4106 f386853f4e4e4aa340e82987047cf481 "pdflatex"
+  "Relatorio.aux" 1764699232 4943 07b73dee25ab9c53b49dc41bbbfdf137 "pdflatex"
   "Relatorio.bbl" 1764697351 486 76d65a242ec496c9b4361af646ff12cb "biber Relatorio"
-  "Relatorio.lof" 1764697353 267 288fcac6bb1e4323e023908916e41777 "pdflatex"
-  "Relatorio.out" 1764697353 2585 b4f1127526dde5b5a81f0d17b01b7496 "pdflatex"
-  "Relatorio.run.xml" 1764697353 2410 717c0927f41f216f3cf4bba59bbfc439 "pdflatex"
-  "Relatorio.tex" 1764697338 17501 26b70cd16f66766fa4a1a68324c91707 ""
-  "Relatorio.toc" 1764697353 1331 243dee325fcdb583cb40b5517602f8ea "pdflatex"
+  "Relatorio.lof" 1764699232 159 f401a2576a14a188cc30739249f34fb8 "pdflatex"
+  "Relatorio.out" 1764699232 3608 07adbd9ddb02464805e0426f4ab866d3 "pdflatex"
+  "Relatorio.run.xml" 1764699232 2410 717c0927f41f216f3cf4bba59bbfc439 "pdflatex"
+  "Relatorio.tex" 1764699228 21093 731d2abbd995014be791fab936e73d28 ""
+  "Relatorio.toc" 1764699232 1744 265ce07520bb1dff81d24afc6af76280 "pdflatex"
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1757516293 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1757515962 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1757516591 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -29,6 +31,7 @@
   "c:/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvro8t.tfm" 1757516816 7292 d408122871055bbc541d7280c154e210 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1757516314 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ectt0800.tfm" 1757516314 1536 0b0b8ca286de6a006b681926403f35cd ""
+  "c:/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ectt0900.tfm" 1757516314 1536 ae7aab2f8a4bc9edfce2899f53ba88c3 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1757516314 1536 06717a2b50de47d4087ac0e6cd759455 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1757515446 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1757515446 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -41,6 +44,7 @@
   "c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1757515446 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1757515446 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb" 1757515963 175641 e37e2df5b70b76a1b78bfb3b804197c7 ""
+  "c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb" 1757515963 170827 b1cb46f82d978af2aeb6bf26777fa82d ""
   "c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb" 1757515963 169201 651a6333c3213b38091f54d2ab2d2cd6 ""
   "c:/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb" 1757516816 35941 adef23a721dd8354a4a2bf4434f1c484 ""
   "c:/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb" 1757516816 39013 e6ce984d70e653b894670e538a7f0667 ""
@@ -150,7 +154,7 @@
   "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1757519334 5574045 22848c10ad8b56b5f83684fbec0ec0d7 ""
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1757519654 3605803 2ce78c5e1e12078150962fcbb4910302 ""
   "c:/texlive/2025/texmf.cnf" 1757519308 713 e69b156964470283e0530f5060668171 ""
-  "e:/CCA/Projeto/CCA_Project/CCA_Project/REPORT_LATEX/Relatorio.tex" 1764697338 17501 26b70cd16f66766fa4a1a68324c91707 ""
+  "e:/CCA/Projeto/CCA_Project/CCA_Project/REPORT_LATEX/Relatorio.tex" 1764699228 21093 731d2abbd995014be791fab936e73d28 ""
   (generated)
   "Relatorio.aux"
   "Relatorio.bcf"
