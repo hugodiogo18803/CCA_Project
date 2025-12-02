@@ -158,7 +158,7 @@ As cifras clássicas implementadas operam ao nível do carater (byte visível).
 \end{itemize}
 
 \subsection{Tecnologias Utilizadas}
-A aplicação foi desenvolvida na linguagem \textbf{Python} devido à sua versatilidade na manipulação de \textit{strings} e \textit{bytes}. Para a interface gráfica utilizou-se a biblioteca \textbf{[Inserir Biblioteca: ex: Tkinter/PyQt]}, e para as cifras modernas a biblioteca \textbf{Cryptography/PyCryptodome}.
+A aplicação foi desenvolvida na linguagem \textbf{Python} devido à sua versatilidade na manipulação de \textit{strings} e \textit{bytes}. Para a interface gráfica utilizou-se a biblioteca \textbf{CustomTkinter}, e para as cifras modernas a biblioteca \textbf{Cryptography/PyCryptodome}.
 
 % ----------------------------------------------------------------------
 % 3. ARQUITETURA E IMPLEMENTAÇÃO
@@ -226,7 +226,7 @@ Na operação de decifragem, a aplicação lê os primeiros bytes do ficheiro (8
 % ----------------------------------------------------------------------
 \section{Análise de Segurança e Decisões de Projeto}
 
-A implementação realizada cumpre os requisitos funcionais propostos, no entanto, uma análise de segurança rigorosa revela vulnerabilidades inerentes à natureza académica do projeto, bem como decisões de *design* tomadas para mitigar riscos nos algoritmos modernos.
+A implementação realizada cumpre os requisitos funcionais propostos, no entanto, uma análise de segurança rigorosa revela vulnerabilidades inerentes à natureza académica do projeto, bem como decisões de design tomadas para mitigar riscos nos algoritmos modernos.
 
 \begin{enumerate}
     \item \textbf{Armazenamento de Material Criptográfico:} A leitura de chaves a partir de ficheiros de texto simples (\textit{cleartext}) viola princípios fundamentais de gestão de segredos. Num ambiente de produção, esta abordagem expõe o sistema a fugas de informação triviais. A solução adequada passaria pela utilização de cofres digitais (\textit{Key Management Systems} - KMS) ou módulos de segurança de hardware (HSM), garantindo que as chaves nunca residem em disco de forma legível.
