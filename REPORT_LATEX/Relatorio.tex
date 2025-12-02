@@ -209,7 +209,7 @@ A aplicação fornece uma Interface Gráfica (GUI) para facilitar a interação 
 As cifras clássicas implementadas operam ao nível do caráter e pertencem à era pré-computacional.
 =======
 As cifras clássicas implementadas operam ao nível do caracter (byte visível).
->>>>>>> d1a65c1be61566cbada1c23da1288f6a8898a245
+>>>>>>>
 \begin{itemize}
     \item \textbf{Vigenère:} Uma cifra polialfabética que utiliza uma chave e uma tabela (\textit{Tabula Recta}) para substituir caracteres, dificultando a análise de frequências simples.
     \item \textbf{Playfair:} Uma cifra de substituição poligráfica que opera sobre digramas (pares de letras) utilizando uma matriz $5 \times 5$.
@@ -242,57 +242,81 @@ A GUI permite ao utilizador selecionar o algoritmo, carregar os ficheiros de cha
 =======
 \subsection{Estrutura da Aplicação}
 A aplicação foi desenvolvida seguindo uma arquitetura modular que separa a interface gráfica da lógica criptográfica. O ficheiro principal, \texttt{gui.py}, implementa a interface utilizando a biblioteca \textbf{CustomTkinter}, gerindo os eventos do utilizador e invocando as classes específicas para cada cifra (\texttt{aes\_cipher.py}, \texttt{des\_cipher.py}, \texttt{playfair\_cipher.py} e \texttt{vigenere\_cipher.py}).
->>>>>>> d1a65c1be61566cbada1c23da1288f6a8898a245
 
-\subsection{Implementação: AES e DES}
-Para as cifras modernas, utilizou-se a biblioteca \textbf{PyCryptodome}. 
-Ao contrário de implementações triviais que utilizam o modo ECB (Electronic Codebook), optou-se pelo modo \textbf{CBC (Cipher Block Chaining)} para garantir a segurança semântica.
 
-\textbf{Detalhes de Implementação:}
+\subsection{Implementação: Cifras Modernas (AES e DES)}
+Para as cifras modernas, utilizou-se a biblioteca \textbf{PyCryptodome}. Ambas as implementações partilham a mesma arquitetura de segurança:
 \begin{itemize}
-    \item \textbf{Padding:} Foi aplicado \textit{padding} PKCS7 para ajustar o tamanho dos dados ao tamanho do bloco (8 bytes para DES, 16 para AES).
-    \item \textbf{Gestão de IV:} O Vetor de Inicialização (IV) é gerado aleatoriamente e concatenado no início do ficheiro cifrado.
+    \item \textbf{Modo de Operação:} CBC (\textit{Cipher Block Chaining}) para garantir segurança semântica.
+    \item \textbf{Padding:} PKCS7 (via função \texttt{pad/unpad}) para ajustar os dados ao tamanho do bloco.
+    \item \textbf{Gestão de IV:} O Vetor de Inicialização é gerado aleatoriamente e concatenado no início do ficheiro binário.
 \end{itemize}
 
-\begin{lstlisting}[caption={Cifragem AES com concatenação de IV}, label={lst:aes_code}]
+\subsubsection{AES (Advanced Encryption Standard)}
+A classe \texttt{AESCipher} gere automaticamente chaves de 128, 192 ou 256 bits. O tamanho do bloco é fixo em 128 bits (16 bytes), o que se reflete na extração do IV durante a decifragem (\texttt{data[:16]}).
+
+\begin{lstlisting}[caption={AES: Manipulação de Ficheiros (Bloco de 16 bytes)}, label={lst:aes_impl}]
 def encrypt_file(self, data):
     cipher = AES.new(self.key, AES.MODE_CBC)
     ct_bytes = cipher.encrypt(pad(data, AES.block_size))
-    # Retorna o IV (16 bytes) + Texto Cifrado
+    # Concatena IV (16 bytes) + Criptograma
     return cipher.iv + ct_bytes
+
+def decrypt_file(self, data):
+    # Recupera o IV (primeiros 16 bytes)
+    iv = data[:16]
+    ct = data[16:]
+    cipher = AES.new(self.key, AES.MODE_CBC, iv)
+    return unpad(cipher.decrypt(ct), AES.block_size)
+\end{lstlisting}
+
+\subsubsection{DES (Data Encryption Standard)}
+A classe \texttt{DESCipher} implementa a estrutura clássica de blocos de 64 bits (8 bytes). O código valida estritamente o tamanho da chave (8 bytes) e ajusta a extração do IV para ler apenas os primeiros 8 bytes (\texttt{data[:8]}).
+
+\begin{lstlisting}[caption={DES: Manipulação de Ficheiros (Bloco de 8 bytes)}, label={lst:des_impl}]
+def encrypt_file(self, data):
+    cipher = DES.new(self.key, DES.MODE_CBC)
+    ct_bytes = cipher.encrypt(pad(data, DES.block_size))
+    # Concatena IV (8 bytes) + Criptograma
+    return cipher.iv + ct_bytes
+
+def decrypt_file(self, data):
+    # Recupera o IV (primeiros 8 bytes)
+    iv = data[:8]
+    ct = data[8:]
+    cipher = DES.new(self.key, DES.MODE_CBC, iv)
+    return unpad(cipher.decrypt(ct), DES.block_size)
 \end{lstlisting}
 
 \subsection{Implementação: Vigenère}
-A cifra de Vigenère foi implementada de raiz, suportando tanto a geração automática de uma \textit{Tabula Recta} padrão ($26 \times 26$) como o carregamento de tabelas personalizadas. O algoritmo utiliza o método auxiliar \texttt{\_extend\_key} para ajustar o comprimento da chave à mensagem.
+A cifra de Vigenère foi implementada de raiz, suportando tanto a geração automática de uma \textit{Tabula Recta} padrão ($26 \times 26$) como o carregamento de tabelas personalizadas a partir de ficheiro.
 
-\subsubsection{Cifragem e Decifragem}
-A implementação distingue-se pela assimetria algorítmica entre as operações de cifragem e decifragem, necessária para suportar tabelas com alfabetos desordenados:
-
-\begin{enumerate}
-    \item \textbf{Cifragem ($O(1)$):} O algoritmo calcula os índices da linha (chave) e coluna (texto) e acede diretamente à matriz.
-    \item \textbf{Decifragem ($O(N)$):} O algoritmo identifica a linha através da chave, mas necessita de percorrer essa linha (pesquisa linear) para encontrar a posição do caráter cifrado e deduzir a coluna original.
-\end{enumerate}
-
-Os excertos abaixo ilustram esta distinção na implementação:
+A implementação distingue-se pela assimetria algorítmica entre as operações de cifragem e decifragem. Enquanto a cifragem acede diretamente às coordenadas da matriz ($O(1)$), a decifragem necessita de percorrer a linha correspondente à chave ($O(N)$) para encontrar a coluna original. Esta abordagem foi necessária para suportar tabelas com alfabetos desordenados.
 
 \begin{lstlisting}[caption={Cifragem: Acesso direto à matriz}, label={lst:vig_enc}]
-# Cifragem: Calculo direto das coordenadas
-row = ord(key[i]) - ord('A')
-col = ord(char) - ord('A')
-
-encrypted_char = self.table[row][col]
-ciphertext += encrypted_char
+for i, char in enumerate(plaintext):
+    if char.isalpha():
+        # Use table for encryption
+        row = ord(key[i]) - ord('A')
+        col = ord(char) - ord('A')
+        encrypted_char = self.table[row][col]
+        ciphertext += encrypted_char
+    else:
+        ciphertext += char
 \end{lstlisting}
 
 \begin{lstlisting}[caption={Decifragem: Pesquisa linear na linha}, label={lst:vig_dec}]
-# Decifragem: Identifica a linha e procura o carater
-row = ord(key[i]) - ord('A')
-
-for col in range(26):
-    # Percorre a linha ate encontrar o carater cifrado
-    if self.table[row][col] == char:
-        plaintext += chr(col + ord('A'))
-        break
+for i, char in enumerate(ciphertext):
+    if char.isalpha():
+        # Use table for decryption - find column in row
+        row = ord(key[i]) - ord('A')
+        # Find which column gives us the ciphertext character
+        for col in range(26):
+            if self.table[row][col] == char:
+                plaintext += chr(col + ord('A'))
+                break
+    else:
+        plaintext += char
 \end{lstlisting}
 \subsection{Implementação: Playfair}
 A cifra Playfair envolveu a criação dinâmica da matriz $5 \times 5$, onde a letra 'J' é fundida com o 'I' para se ajustar à grelha de 25 caracteres. Antes do processamento criptográfico, foi implementado um método auxiliar \texttt{\_prepare\_text} que normaliza a entrada: converte para maiúsculas, remove caracteres não-alfabéticos e insere um caráter de enchimento ('X') entre letras repetidas num digrama ou no final do texto caso este tenha um comprimento ímpar.
@@ -306,22 +330,36 @@ O núcleo do algoritmo reside na localização das coordenadas $(linha, coluna)$
     \item \textbf{Retângulo:} As letras formam os cantos opostos de um retângulo. Neste caso, trocam-se as colunas das letras, mantendo-se as linhas originais. Esta operação é a mesma tanto na cifragem como na decifragem.
 \end{enumerate}
 
-O seguinte excerto de código ilustra a aplicação destas regras durante o processo de cifragem:
+\begin{lstlisting}[caption={Cifragem: Aplicação das regras geométricas}, label={lst:playfair_enc}]
+for i in range(0, len(plaintext), 2):
+    row1, col1 = self._find_position(plaintext[i])
+    row2, col2 = self._find_position(plaintext[i + 1])
+    
+    if row1 == row2:  # Mesma linha (shift direita)
+        ciphertext += self.matrix[row1][(col1 + 1) % 5]
+        ciphertext += self.matrix[row2][(col2 + 1) % 5]
+    elif col1 == col2:  # Mesma coluna (shift baixo)
+        ciphertext += self.matrix[(row1 + 1) % 5][col1]
+        ciphertext += self.matrix[(row2 + 1) % 5][col2]
+    else:  # Retangulo (troca cantos)
+        ciphertext += self.matrix[row1][col2]
+        ciphertext += self.matrix[row2][col1]
+\end{lstlisting}
 
-\begin{lstlisting}[caption={Regras de transformação Playfair (Cifragem)}, label={lst:playfair_logic}]
-# Determina as coordenadas do par na matriz
-row1, col1 = self._find_position(plaintext[i])
-row2, col2 = self._find_position(plaintext[i + 1])
-
-if row1 == row2:  # Mesma linha
-    ciphertext += self.matrix[row1][(col1 + 1) % 5]
-    ciphertext += self.matrix[row2][(col2 + 1) % 5]
-elif col1 == col2:  # Mesma coluna
-    ciphertext += self.matrix[(row1 + 1) % 5][col1]
-    ciphertext += self.matrix[(row2 + 1) % 5][col2]
-else:  # Retangulo
-    ciphertext += self.matrix[row1][col2]
-    ciphertext += self.matrix[row2][col1]
+\begin{lstlisting}[caption={Decifragem: Inversão do deslocamento}, label={lst:playfair_dec}]
+for i in range(0, len(ciphertext), 2):
+    row1, col1 = self._find_position(ciphertext[i])
+    row2, col2 = self._find_position(ciphertext[i + 1])
+    
+    if row1 == row2:  # Mesma linha (shift esquerda)
+        plaintext += self.matrix[row1][(col1 - 1) % 5]
+        plaintext += self.matrix[row2][(col2 - 1) % 5]
+    elif col1 == col2:  # Mesma coluna (shift cima)
+        plaintext += self.matrix[(row1 - 1) % 5][col1]
+        plaintext += self.matrix[(row2 - 1) % 5][col2]
+    else:  # Retangulo (troca cantos - mantem-se igual)
+        plaintext += self.matrix[row1][col2]
+        plaintext += self.matrix[row2][col1]
 \end{lstlisting}
 
 Para a decifragem, a lógica é idêntica, alterando apenas o operador aritmético nas regras de linha e coluna para subtração (ex: \texttt{(col1 - 1) \% 5}), revertendo assim o deslocamento circular.

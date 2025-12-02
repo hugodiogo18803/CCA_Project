@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber Relatorio"] 1764696613.48811 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1764696929.1356 0
-  "Relatorio.bcf" 1764696928 133730 f9400eb699cd72b44644bc447da43b21 "pdflatex"
+["biber Relatorio"] 1764696613.48811 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1764699895.63716 0
+  "Relatorio.bcf" 1764699894 133730 f9400eb699cd72b44644bc447da43b21 "pdflatex"
   (generated)
   "Relatorio.bbl"
   "Relatorio.blg"
   (rewritten before read)
-["pdflatex"] 1764696921.16558 "c:/Users/darkc/CCA_Project/REPORT_LATEX/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1764696929.13792 0
+["pdflatex"] 1764699890.71108 "c:/Users/darkc/CCA_Project/REPORT_LATEX/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1764699895.64082 0
   "C:/Users/darkc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1764694215 82794 3356c8c6c52528dda375b8aed03f628e ""
   "C:/Users/darkc/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt0800.pk" 1746216491 15192 825c31f95ce3747e8db299dd805f2ef6 ""
   "C:/Users/darkc/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk" 1732800809 20028 5daeafadf9ce5cd62c4ba8a5e29bb313 ""
@@ -145,14 +145,14 @@
   "C:/Users/darkc/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "Recursos/Logos/IPBejaESTIG.jpg" 1731453100 24524 8256cc09fbb9140893a7ec292a0eb389 ""
   "Recursos/Logos/LOGO_IPB.png" 1731453100 70931 8e4fd2cd3676e6d3adc0f137d7334c9f ""
-  "Relatorio.aux" 1764696928 4106 f386853f4e4e4aa340e82987047cf481 "pdflatex"
+  "Relatorio.aux" 1764699894 4826 9cf60dc408ebba804831748f35f138c2 "pdflatex"
   "Relatorio.bbl" 1764696620 486 76d65a242ec496c9b4361af646ff12cb "biber Relatorio"
-  "Relatorio.lof" 1764696928 267 288fcac6bb1e4323e023908916e41777 "pdflatex"
-  "Relatorio.out" 1764696928 2585 b4f1127526dde5b5a81f0d17b01b7496 "pdflatex"
-  "Relatorio.run.xml" 1764696928 2410 717c0927f41f216f3cf4bba59bbfc439 "pdflatex"
-  "Relatorio.tex" 1764696909 17501 26b70cd16f66766fa4a1a68324c91707 ""
-  "Relatorio.toc" 1764696928 1331 243dee325fcdb583cb40b5517602f8ea "pdflatex"
-  "c:/Users/darkc/CCA_Project/REPORT_LATEX/Relatorio.tex" 1764696909 17501 26b70cd16f66766fa4a1a68324c91707 ""
+  "Relatorio.lof" 1764699894 267 288fcac6bb1e4323e023908916e41777 "pdflatex"
+  "Relatorio.out" 1764699894 2994 fc8d622236a72a9547c1fbbd66dcb3f4 "pdflatex"
+  "Relatorio.run.xml" 1764699894 2410 717c0927f41f216f3cf4bba59bbfc439 "pdflatex"
+  "Relatorio.tex" 1764699880 19300 6c360dd3bce7a7a5153bb3349634e582 ""
+  "Relatorio.toc" 1764699894 1468 5906f8318f359fb6352b32b5a4c078a1 "pdflatex"
+  "c:/Users/darkc/CCA_Project/REPORT_LATEX/Relatorio.tex" 1764699880 19300 6c360dd3bce7a7a5153bb3349634e582 ""
   (generated)
   "Relatorio.aux"
   "Relatorio.bcf"
