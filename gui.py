@@ -6,10 +6,10 @@ Professional interface for AES, DES, Playfair, and Vigenère ciphers
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox, scrolledtext
 import os
-from aes_cipher import AESCipher
-from des_cipher import DESCipher
-from playfair_cipher import PlayfairCipher
-from vigenere_cipher import VigenereCipher
+from ciphers.aes_cipher import AESCipher
+from ciphers.des_cipher import DESCipher
+from ciphers.playfair_cipher import PlayfairCipher
+from ciphers.vigenere_cipher import VigenereCipher
 
 
 class ToolTip:
