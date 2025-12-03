@@ -199,6 +199,7 @@ A segurança da informação depende, em grande medida, da robustez dos algoritm
 
 A aplicação fornece uma Interface Gráfica (GUI) para facilitar a interação do utilizador, abstraindo a complexidade das operações matemáticas e binárias subjacentes.
 
+\break
 % ======================================================================
 % 2. ENQUADRAMENTO TEÓRICO
 % ======================================================================
@@ -218,6 +219,7 @@ As cifras modernas operam sobre blocos de bits e são desenhadas para resistir a
     \item \textbf{AES (Advanced Encryption Standard):} Sucessor do DES, operando com blocos de 128 bits e chaves de 128, 192 ou 256 bits, baseado numa rede de substituição-permutação.
 \end{itemize}
 
+\break
 % ======================================================================
 % 3. DESENVOLVIMENTO DA APLICAÇÃO
 % ======================================================================
@@ -234,7 +236,6 @@ A estrutura do projeto foi organizada em pacotes para facilitar a manutenção e
 \end{itemize}
 \begin{figure}[H]
     \centering
-    % COLOCA AQUI O CAMINHO DA TUA GUI
     \includegraphics[width=0.8\textwidth]{Recursos/Imagens/UIExample.png}
     \caption{Interface principal da aplicação desenvolvida.}
     \label{fig:gui_main}
@@ -361,6 +362,8 @@ for i in range(0, len(ciphertext), 2):
 \end{lstlisting}
 
 Para a decifragem, a lógica é idêntica, alterando apenas o operador aritmético nas regras de linha e coluna para subtração (ex: \texttt{(col1 - 1) \% 5}), revertendo assim o deslocamento circular.
+
+\break
 % ======================================================================
 % 4. ANÁLISE DE SEGURANÇA
 % ======================================================================
@@ -373,6 +376,7 @@ Apesar da funcionalidade correta, identificam-se os seguintes aspetos críticos 
     \item \textbf{Memória:} Python não permite limpeza segura de memória, deixando chaves expostas em RAM durante a execução.
 \end{enumerate}
 
+\break
 % ======================================================================
 % 5. TESTES E RESULTADOS
 % ======================================================================
@@ -434,6 +438,7 @@ Geral & Ficheiro inexistente & Exceção \texttt{FileNotFoundError} tratada \\ \
 \subsection{Conclusão dos Testes}
 Os resultados demonstram que a aplicação cumpre os requisitos funcionais. O uso do modo CBC garante que ficheiros com padrões repetitivos não geram padrões no texto cifrado, e a validação rigorosa dos tamanhos das chaves no módulo \texttt{main.py} e \texttt{gui.py} previne erros de execução na biblioteca criptográfica subjacente.
 
+\break
 % ======================================================================
 % 6. CONCLUSÃO
 % ======================================================================
