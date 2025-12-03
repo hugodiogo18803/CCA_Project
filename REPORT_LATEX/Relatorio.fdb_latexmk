@@ -1,0 +1,25 @@
+# Fdb version 4
+["biber Relatorio"] 1764781916.27025 "Relatorio.bcf" "Relatorio.bbl" "Relatorio" 1764782058.15023 0
+  "Relatorio.bcf" 1764781912 137095 fc2b3fc7e259c32c04ce9ae64be32781 ""
+  (generated)
+  "Relatorio.bbl"
+  "Relatorio.blg"
+  (rewritten before read)
+["pdflatex"] 1764782056.80967 "c:/Users/darkc/CCA_Project/REPORT_LATEX/Relatorio.tex" "Relatorio.pdf" "Relatorio" 1764782058.15074 2
+  "Recursos/Imagens/UIExample.png" 1764700228 38458 e5ec7e559f9e7fd7c6eb95e82b89d1b2 ""
+  "Recursos/Logos/IPBejaESTIG.jpg" 1731453100 24524 8256cc09fbb9140893a7ec292a0eb389 ""
+  "Recursos/Logos/LOGO_IPB.png" 1731453100 70931 8e4fd2cd3676e6d3adc0f137d7334c9f ""
+  "Relatorio.aux" 1764781959 5851 495055b31853d7f02874ee981d7b35d4 "pdflatex"
+  "Relatorio.bbl" 1764782056 486 76d65a242ec496c9b4361af646ff12cb "biber Relatorio"
+  "Relatorio.lof" 1764781959 161 22df1eb3235a3bac6d25b68153ce1369 "pdflatex"
+  "Relatorio.out" 1764781938 4218 6c1510906d05eeb682df0822844bdec2 "pdflatex"
+  "Relatorio.toc" 1764781959 1994 9616b37a65edf798f395f264aba650ea "pdflatex"
+  "c:/Users/darkc/CCA_Project/REPORT_LATEX/Relatorio.tex" 1764781959 23277 e7c525587c2c5970351d87898a15cfae ""
+  (generated)
+  "Relatorio.aux"
+  "Relatorio.lof"
+  "Relatorio.log"
+  "Relatorio.out"
+  "Relatorio.pdf"
+  "Relatorio.toc"
+  (rewritten before read)

@@ -1,0 +1,452 @@
+\documentclass[a4paper,10pt]{article}
+
+% ======================================================================
+% CONFIGURAÇÃO DA FONTE (ARIAL / HELVETICA)
+% ======================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Tenta usar Arial nativa (se usar XeLaTeX), senão usa Helvetica (padrão LaTeX)
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi>0
+    \usepackage{fontspec}
+    \setmainfont{Arial}
+    \setsansfont{Arial}
+\else
+    \usepackage[scaled]{helvet} % Usa Helvetica (clone da Arial)
+    \renewcommand{\familydefault}{\sfdefault} % Força todo o texto a ser Sans-Serif
+\fi
+
+% ======================================================================
+% PACOTES E FORMATAÇÃO
+% ======================================================================
+\usepackage[portuguese]{babel}
+\usepackage[margin=2.5cm]{geometry} % Margens
+\usepackage{setspace}
+\singlespacing % Espaçamento simples (conforme enunciado)
+\usepackage{indentfirst}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{soul}
+
+% --- Pacotes Matemáticos e Gráficos ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{booktabs}
+
+% --- Bibliografia ---
+\usepackage[backend=biber, style=apa, citestyle=apa]{biblatex}
+\addbibresource{Recursos/referencias.bib} 
+
+% --- Configuração de Código (Listings) ---
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize, % Fonte monoespaçada para código
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    language=Python
+}
+\lstset{style=mystyle}
+
+% --- Hiperligações ---
+\usepackage[hidelinks]{hyperref}
+
+% --- Ajustes de Parágrafo ---
+\setlength{\parskip}{6pt} % Espaço entre parágrafos
+\setlength{\parindent}{1.25em}
+
+% ======================================================================
+% DEFINIÇÃO DAS CAPAS
+% ======================================================================
+
+% CAPA 1
+\newcommand{\firsttitlepage}{
+    \begin{titlepage}
+        \centering
+        
+        \begin{figure}[h!]
+            \centering
+            % Ajustar caminho da imagem se necessário
+            \includegraphics[width=6cm]{Recursos/Logos/LOGO_IPB} 
+            \vspace{0.5cm}
+        \end{figure}
+
+        \large\textbf{INSTITUTO POLITÉCNICO DE BEJA} \\
+        \large\textbf{Escola Superior de Tecnologia e Gestão} \\
+        \large\textbf{Mestrado em Engenharia de Segurança Informática} \\
+        \large\textbf{Criptografia e Criptanálise Aplicadas} \\
+        
+        \vspace{3cm}
+        
+        {\Huge \textbf{Desenvolvimento de Aplicação de\\ Cifra Simétrica}} \\
+        
+        \vspace{2cm}
+        
+        \large \textbf{Rafael Conceição Narciso - 24473} \\
+        \large \textbf{Hugo Diogo - 18803} \\
+        
+        \vfill
+        
+        \begin{figure}[h!]
+            \centering
+            % Ajustar caminho da imagem se necessário
+            \includegraphics[width=6cm]{Recursos/Logos/IPBejaESTIG} 
+        \end{figure}
+        
+        \vspace{1cm}
+        
+        {\large Beja, dezembro de 2025}
+    \end{titlepage}
+}
+
+% CAPA 2
+\newcommand{\secondtitlepage}{
+    \begin{titlepage}
+        \centering
+        \vspace*{1cm}
+        
+        \large\textbf{INSTITUTO POLITÉCNICO DE BEJA} \\
+        \large\textbf{Escola Superior de Tecnologia e Gestão} \\
+        \large\textbf{Mestrado em Engenharia de Segurança Informática} \\
+        
+        \vspace{3cm}
+        
+        {\Huge \textbf{Desenvolvimento de Aplicação de\\ Cifra Simétrica}} \\
+        
+        \vspace{2cm}
+        
+        \large \textbf{Rafael Conceição Narciso - 24473} \\
+        \large \textbf{Hugo Diogo - 18803} \\
+
+        \vspace{2cm}
+
+        \large Orientador: Prof. Rui Miguel Silva \\
+        
+        \vfill
+        
+        {\large Beja, dezembro de 2025}
+    \end{titlepage}
+}
+
+% ======================================================================
+% CONTEÚDO DO RELATÓRIO
+% ======================================================================
+\begin{document}
+
+\pagenumbering{gobble}
+
+% --- Capas ---
+\firsttitlepage
+\secondtitlepage
+
+% --- Resumo (PT) ---
+\section*{\LARGE\textbf{\textit{Resumo}}}
+Este relatório descreve o desenvolvimento de uma aplicação gráfica para a cifragem e decifragem de ficheiros, implementada na linguagem Python. O projeto visa consolidar conhecimentos de criptografia simétrica através da implementação manual de cifras clássicas (Vigenère e Playfair) e da integração segura de bibliotecas para cifras modernas (AES e DES). São abordadas decisões de arquitetura, modos de operação (CBC) e considerações de segurança.
+
+\vspace{1cm}
+\textbf{Palavras-chave:} Python, Criptografia Simétrica, AES, DES, Vigenère, Playfair.
+\newpage
+
+% --- Abstract (EN) ---
+\section*{\LARGE\textbf{\textit{Abstract}}}
+This report details the development of a graphical application for file encryption and decryption, implemented in Python. The project aims to consolidate symmetric cryptography knowledge through the manual implementation of classical ciphers (Vigenère and Playfair) and the secure integration of libraries for modern ciphers (AES and DES). Architectural decisions, modes of operation (CBC), and security considerations are discussed.
+
+\vspace{1cm}
+\textbf{Keywords:} Python, Symmetric Cryptography, AES, DES, Vigenère, Playfair.
+
+% --- Índices ---
+\newpage
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\listfigurename}{Índice de Figuras}
+
+% Espaçamento simples nas listas
+\singlespacing 
+\tableofcontents
+\listoffigures
+\doublespacing % Volta a espaçamento normal se necessário, ou mantém single
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\singlespacing % Garante espaçamento simples no texto (requisito do enunciado)
+
+% ======================================================================
+% 1. INTRODUÇÃO
+% ======================================================================
+\section{Introdução}\label{intro}
+A segurança da informação depende, em grande medida, da robustez dos algoritmos criptográficos utilizados para proteger a confidencialidade dos dados. Este projeto, desenvolvido no âmbito da unidade curricular de Criptografia e Criptanálise Aplicadas, consiste na criação de uma ferramenta em Python capaz de cifrar e decifrar ficheiros utilizando quatro algoritmos distintos: dois clássicos (Vigenère e Playfair) e dois modernos (DES e AES).
+
+A aplicação fornece uma Interface Gráfica (GUI) para facilitar a interação do utilizador, abstraindo a complexidade das operações matemáticas e binárias subjacentes.
+
+\break
+% ======================================================================
+% 2. ENQUADRAMENTO TEÓRICO
+% ======================================================================
+\section{Enquadramento Teórico}\label{theory}
+
+\subsection{Cifras Clássicas}
+As cifras clássicas implementadas operam ao nível do caracter (byte visível).
+\begin{itemize}
+    \item \textbf{Vigenère:} Uma cifra polialfabética que utiliza uma chave e uma tabela (\textit{Tabula Recta}) para substituir caracteres, dificultando a análise de frequências simples.
+    \item \textbf{Playfair:} Uma cifra de substituição poligráfica que opera sobre digramas (pares de letras) utilizando uma matriz $5 \times 5$.
+\end{itemize}
+
+\subsection{Cifras Modernas}
+As cifras modernas operam sobre blocos de bits e são desenhadas para resistir a ataques computacionais.
+\begin{itemize}
+    \item \textbf{DES (Data Encryption Standard):} Algoritmo de bloco de 64 bits baseado numa Rede de Feistel. Utiliza uma chave de 56 bits.
+    \item \textbf{AES (Advanced Encryption Standard):} Sucessor do DES, operando com blocos de 128 bits e chaves de 128, 192 ou 256 bits, baseado numa rede de substituição-permutação.
+\end{itemize}
+
+\break
+% ======================================================================
+% 3. DESENVOLVIMENTO DA APLICAÇÃO
+% ======================================================================
+\section{Desenvolvimento da Aplicação}\label{dev}
+A aplicação foi desenvolvida em \textbf{Python} devido à sua versatilidade na manipulação de \textit{byte streams}. A interface gráfica foi construída com a biblioteca \textbf{Tkinter}, seguindo uma arquitetura orientada a eventos.
+
+\subsection{Arquitetura e Interface Gráfica}
+A estrutura do projeto foi organizada em pacotes para facilitar a manutenção e escalabilidade:
+
+\begin{itemize}
+    \item \texttt{gui.py}: O ponto de entrada da interface gráfica. Foi construído utilizando a biblioteca nativa \texttt{tkinter} com o módulo \texttt{ttk} para estilização moderna ("clam" theme), seguindo uma arquitetura orientada a eventos. A GUI permite ao utilizador selecionar o algoritmo (AES, DES, Playfair, Vigenère), configurar ficheiros de chaves ou tabelas e monitorizar o estado das operações através de uma janela de \textit{logs}.
+    \item \texttt{main.py}: Disponibiliza uma interface de linha de comandos (CLI) para execução rápida de tarefas sem ambiente gráfico.
+    \item Pacote \texttt{ciphers/}: Contém as implementações isoladas de cada cifra (\texttt{aes\_cipher.py}, \texttt{des\_cipher.py}, \texttt{playfair\_cipher.py}, \texttt{vigenere\_cipher.py}), permitindo que estas sejam importadas e reutilizadas independentemente da interface.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Recursos/Imagens/UIExample.png}
+    \caption{Interface principal da aplicação desenvolvida.}
+    \label{fig:gui_main}
+\end{figure}
+\subsection{Estrutura da Aplicação}
+A aplicação foi desenvolvida seguindo uma arquitetura modular que separa a interface gráfica da lógica criptográfica. O ficheiro principal, \texttt{gui.py}, implementa a interface utilizando a biblioteca \textbf{CustomTkinter}, gerindo os eventos do utilizador e invocando as classes específicas para cada cifra (\texttt{aes\_cipher.py}, \texttt{des\_cipher.py}, \texttt{playfair\_cipher.py} e \texttt{vigenere\_cipher.py}).
+
+\subsection{Implementação: Cifras Modernas (AES e DES)}
+Para as cifras modernas, utilizou-se a biblioteca \textbf{PyCryptodome}. Ambas as implementações partilham a mesma arquitetura de segurança:
+\begin{itemize}
+    \item \textbf{Modo de Operação:} CBC (\textit{Cipher Block Chaining}) para garantir segurança semântica.
+    \item \textbf{Padding:} PKCS7 (via função \texttt{pad/unpad}) para ajustar os dados ao tamanho do bloco.
+    \item \textbf{Gestão de IV:} O Vetor de Inicialização é gerado aleatoriamente e concatenado no início do ficheiro binário.
+\end{itemize}
+
+\subsubsection{AES (Advanced Encryption Standard)}
+A classe \texttt{AESCipher} gere automaticamente chaves de 128, 192 ou 256 bits. O tamanho do bloco é fixo em 128 bits (16 bytes), o que se reflete na extração do IV durante a decifragem (\texttt{data[:16]}).
+
+\begin{lstlisting}[caption={AES: Manipulação de Ficheiros (Bloco de 16 bytes)}, label={lst:aes_impl}]
+def encrypt_file(self, data):
+    cipher = AES.new(self.key, AES.MODE_CBC)
+    ct_bytes = cipher.encrypt(pad(data, AES.block_size))
+    # Concatena IV (16 bytes) + Criptograma
+    return cipher.iv + ct_bytes
+
+def decrypt_file(self, data):
+    # Recupera o IV (primeiros 16 bytes)
+    iv = data[:16]
+    ct = data[16:]
+    cipher = AES.new(self.key, AES.MODE_CBC, iv)
+    return unpad(cipher.decrypt(ct), AES.block_size)
+\end{lstlisting}
+
+\subsubsection{DES (Data Encryption Standard)}
+A classe \texttt{DESCipher} implementa a estrutura clássica de blocos de 64 bits (8 bytes). O código valida estritamente o tamanho da chave (8 bytes) e ajusta a extração do IV para ler apenas os primeiros 8 bytes (\texttt{data[:8]}).
+
+\begin{lstlisting}[caption={DES: Manipulação de Ficheiros (Bloco de 8 bytes)}, label={lst:des_impl}]
+def encrypt_file(self, data):
+    cipher = DES.new(self.key, DES.MODE_CBC)
+    ct_bytes = cipher.encrypt(pad(data, DES.block_size))
+    # Concatena IV (8 bytes) + Criptograma
+    return cipher.iv + ct_bytes
+
+def decrypt_file(self, data):
+    # Recupera o IV (primeiros 8 bytes)
+    iv = data[:8]
+    ct = data[8:]
+    cipher = DES.new(self.key, DES.MODE_CBC, iv)
+    return unpad(cipher.decrypt(ct), DES.block_size)
+\end{lstlisting}
+
+\subsection{Implementação: Vigenère}
+A cifra de Vigenère foi implementada de raiz, suportando tanto a geração automática de uma \textit{Tabula Recta} padrão ($26 \times 26$) como o carregamento de tabelas personalizadas a partir de ficheiro.
+
+A implementação distingue-se pela assimetria algorítmica entre as operações de cifragem e decifragem. Enquanto a cifragem acede diretamente às coordenadas da matriz ($O(1)$), a decifragem necessita de percorrer a linha correspondente à chave ($O(N)$) para encontrar a coluna original. Esta abordagem foi necessária para suportar tabelas com alfabetos desordenados.
+
+\begin{lstlisting}[caption={Cifragem: Acesso direto à matriz}, label={lst:vig_enc}]
+for i, char in enumerate(plaintext):
+    if char.isalpha():
+        # Use table for encryption
+        row = ord(key[i]) - ord('A')
+        col = ord(char) - ord('A')
+        encrypted_char = self.table[row][col]
+        ciphertext += encrypted_char
+    else:
+        ciphertext += char
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Decifragem: Pesquisa linear na linha}, label={lst:vig_dec}]
+for i, char in enumerate(ciphertext):
+    if char.isalpha():
+        # Use table for decryption - find column in row
+        row = ord(key[i]) - ord('A')
+        # Find which column gives us the ciphertext character
+        for col in range(26):
+            if self.table[row][col] == char:
+                plaintext += chr(col + ord('A'))
+                break
+    else:
+        plaintext += char
+\end{lstlisting}
+\subsection{Implementação: Playfair}
+A cifra Playfair envolveu a criação dinâmica da matriz $5 \times 5$, onde a letra 'J' é fundida com o 'I' para se ajustar à grelha de 25 caracteres. Antes do processamento criptográfico, foi implementado um método auxiliar \texttt{\_prepare\_text} que normaliza a entrada: converte para maiúsculas, remove caracteres não-alfabéticos e insere um caráter de enchimento ('X') entre letras repetidas num digrama ou no final do texto caso este tenha um comprimento ímpar.
+
+\subsubsection{Lógica de Cifragem e Decifragem}
+O núcleo do algoritmo reside na localização das coordenadas $(linha, coluna)$ de cada par de letras na matriz. A transformação segue três regras geométricas distintas, implementadas através de aritmética modular:
+
+\begin{enumerate}
+    \item \textbf{Mesma Linha:} Na cifragem, as letras são substituídas pelas que se encontram imediatamente à direita (coluna + 1). Na decifragem, utiliza-se a letra imediatamente à esquerda (coluna - 1).
+    \item \textbf{Mesma Coluna:} Na cifragem, as letras são substituídas pelas que se encontram imediatamente abaixo (linha + 1). Na decifragem, utiliza-se a letra imediatamente acima (linha - 1).
+    \item \textbf{Retângulo:} As letras formam os cantos opostos de um retângulo. Neste caso, trocam-se as colunas das letras, mantendo-se as linhas originais. Esta operação é a mesma tanto na cifragem como na decifragem.
+\end{enumerate}
+
+\begin{lstlisting}[caption={Cifragem: Aplicação das regras geométricas}, label={lst:playfair_enc}]
+for i in range(0, len(plaintext), 2):
+    row1, col1 = self._find_position(plaintext[i])
+    row2, col2 = self._find_position(plaintext[i + 1])
+    
+    if row1 == row2:  # Mesma linha (shift direita)
+        ciphertext += self.matrix[row1][(col1 + 1) % 5]
+        ciphertext += self.matrix[row2][(col2 + 1) % 5]
+    elif col1 == col2:  # Mesma coluna (shift baixo)
+        ciphertext += self.matrix[(row1 + 1) % 5][col1]
+        ciphertext += self.matrix[(row2 + 1) % 5][col2]
+    else:  # Retangulo (troca cantos)
+        ciphertext += self.matrix[row1][col2]
+        ciphertext += self.matrix[row2][col1]
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Decifragem: Inversão do deslocamento}, label={lst:playfair_dec}]
+for i in range(0, len(ciphertext), 2):
+    row1, col1 = self._find_position(ciphertext[i])
+    row2, col2 = self._find_position(ciphertext[i + 1])
+    
+    if row1 == row2:  # Mesma linha (shift esquerda)
+        plaintext += self.matrix[row1][(col1 - 1) % 5]
+        plaintext += self.matrix[row2][(col2 - 1) % 5]
+    elif col1 == col2:  # Mesma coluna (shift cima)
+        plaintext += self.matrix[(row1 - 1) % 5][col1]
+        plaintext += self.matrix[(row2 - 1) % 5][col2]
+    else:  # Retangulo (troca cantos - mantem-se igual)
+        plaintext += self.matrix[row1][col2]
+        plaintext += self.matrix[row2][col1]
+\end{lstlisting}
+
+Para a decifragem, a lógica é idêntica, alterando apenas o operador aritmético nas regras de linha e coluna para subtração (ex: \texttt{(col1 - 1) \% 5}), revertendo assim o deslocamento circular.
+
+\break
+% ======================================================================
+% 4. ANÁLISE DE SEGURANÇA
+% ======================================================================
+\section{Análise de Segurança e Decisões de Projeto}
+Apesar da funcionalidade correta, identificam-se os seguintes aspetos críticos de segurança:
+
+\begin{enumerate}
+    \item \textbf{Gestão de Chaves:} As chaves são lidas de ficheiros de texto simples. Em produção, dever-se-ia utilizar um KMS (Key Management System).
+    \item \textbf{Integridade:} O modo CBC garante confidencialidade, mas não integridade. A aplicação é vulnerável a ataques de modificação de bits ("bit-flipping"), pois não implementa HMAC para autenticação da mensagem.
+    \item \textbf{Memória:} Python não permite limpeza segura de memória, deixando chaves expostas em RAM durante a execução.
+\end{enumerate}
+
+\break
+% ======================================================================
+% 5. TESTES E RESULTADOS
+% ======================================================================
+\section{Testes e Resultados}
+
+Para validar a robustez e a correção dos algoritmos implementados, foi executado um conjunto abrangente de testes funcionais. Estes testes incidiram sobre a interface de linha de comandos (CLI) e a interface gráfica (GUI), verificando tanto o sucesso das operações ("happy path") como o comportamento da aplicação perante dados inválidos (tratamento de exceções).
+
+\subsection{Metodologia de Testes}
+Os testes foram divididos em duas categorias principais:
+\begin{enumerate}
+    \item \textbf{Cifras Modernas (AES/DES):} Focados na integridade binária de ficheiros não textuais (ex: imagens, PDF).
+    \item \textbf{Cifras Clássicas (Playfair/Vigenère):} Focados na correta substituição de caracteres e normalização de texto (remoção de acentos, conversão para maiúsculas).
+\end{enumerate}
+
+\subsection{Verificação de Integridade (AES e DES)}
+O principal critério de sucesso para as cifras simétricas modernas é a reversibilidade exata do processo.
+
+\textbf{Cenário de Teste:}
+Foi realizado um ciclo de Cifra-Decifra num ficheiro binário (imagem JPEG) utilizando o algoritmo AES no modo CBC.
+
+\begin{itemize}
+    \item \textbf{Entrada:} \texttt{imagem\_teste.jpg} (Size: 2.4 MB)
+    \item \textbf{Chave:} Ficheiro contendo 16 bytes aleatórios (AES-128).
+    \item \textbf{Resultado da Cifragem:} Ficheiro \texttt{imagem.enc}. Observou-se um aumento de tamanho de 16 a 32 bytes, correspondente ao Vetor de Inicialização (IV) e ao \textit{padding} PKCS7 adicionados.
+    \item \textbf{Resultado da Decifragem:} Ficheiro \texttt{imagem\_recuperada.jpg}.
+    \item \textbf{Validação:} A comparação de \textit{hashes} (SHA-256) confirmou que o ficheiro recuperado é bit-a-bit idêntico ao original.
+\end{itemize}
+
+\subsection{Testes Funcionais de Cifras Clássicas}
+Para a cifra de Vigenère, validou-se o suporte a tabelas personalizadas e chaves de comprimento variável.
+
+\begin{lstlisting}[caption={Log de Execução CLI - Vigenère}, label={lst:vig_test}, basicstyle=\ttfamily\small, frame=single]
+=== Vigenere Cipher ===
+Enter table file path: config/table_26x26.txt
+Enter key file path: keys/secret.txt
+Choose operation (1-Encrypt / 2-Decrypt): 1
+File encrypted successfully to 'output.txt'
+\end{lstlisting}
+
+Foi verificado que a implementação gere corretamente a repetição da chave (\textit{key extension}) quando esta é mais curta que a mensagem.
+
+\subsection{Validação de Entradas e Tratamento de Erros}
+A robustez da aplicação foi testada introduzindo deliberadamente parâmetros incorretos na Interface Gráfica.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Algoritmo} & \textbf{Condição de Erro} & \textbf{Comportamento Observado} \\ \hline
+AES & Chave com 10 bytes & Erro: "Key must be 16, 24, or 32 bytes" \\ \hline
+DES & Chave com 9 bytes & Erro: "Key must be exactly 8 bytes" \\ \hline
+Playfair & Matriz com números & Filtragem automática (apenas letras usadas) \\ \hline
+Geral & Ficheiro inexistente & Exceção \texttt{FileNotFoundError} tratada \\ \hline
+\end{tabular}
+\caption{Resumo dos testes de tratamento de erros}
+\label{tab:error_tests}
+\end{table}
+
+\subsection{Conclusão dos Testes}
+Os resultados demonstram que a aplicação cumpre os requisitos funcionais. O uso do modo CBC garante que ficheiros com padrões repetitivos não geram padrões no texto cifrado, e a validação rigorosa dos tamanhos das chaves no módulo \texttt{main.py} e \texttt{gui.py} previne erros de execução na biblioteca criptográfica subjacente.
+
+\break
+% ======================================================================
+% 6. CONCLUSÃO
+% ======================================================================
+\section{Conclusão}\label{con}
+O desenvolvimento deste projeto permitiu consolidar a distinção prática entre cifras de fluxo de texto (Clássicas) e cifras de bloco binário (Modernas). A implementação do modo CBC e a gestão manual de tabelas no Playfair foram os principais desafios superados, resultando numa ferramenta funcional e didática.
+
+% --- Bibliografia ---
+\newpage
+\printbibliography
+
+\end{document}
